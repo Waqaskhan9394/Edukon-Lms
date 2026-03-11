@@ -1,0 +1,92 @@
+import React from 'react';
+import { AiFillStar, AiOutlineBook, AiOutlineTeam } from 'react-icons/ai';
+
+// Instructor Images
+import inst1 from '../../assets/Image/Instructors1.jpg';
+import inst2 from '../../assets/Image/Instructors2.jpg';
+import inst3 from '../../assets/Image/Instructors3.jpg';
+import inst4 from '../../assets/Image/Instructors4.jpg';
+
+const Instructors = () => {
+  const team = [
+    { id: 1, name: "Emilee Logan", deg: "Master of Education Degree", img: inst1, courses: "08 courses", students: "30 students" },
+    { id: 2, name: "Donald Logan", deg: "Master of Education Degree", img: inst2, courses: "08 courses", students: "30 students" },
+    { id: 3, name: "Oliver Porter", deg: "Master of Education Degree", img: inst3, courses: "08 courses", students: "30 students" },
+    { id: 4, name: "Nahla Jones", deg: "Master of Education Degree", img: inst4, courses: "08 courses", students: "30 students" },
+  ];
+
+  return (
+    <section className="py-24 bg-[#FFF9F1] font-['Roboto',sans-serif]">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24">
+        
+        {/* --- HEADER --- */}
+        <div className="text-center mb-16">
+          <span className="text-[#FF6B2C] font-bold tracking-[3px] uppercase text-[15px] block mb-2">
+            WORLD-CLASS INSTRUCTORS
+          </span>
+          <h2 className="text-[34px] md:text-[46px] font-[800] text-[#1A2132] leading-tight">
+            Classes Taught By Real Creators
+          </h2>
+        </div>
+
+        {/* --- INSTRUCTORS GRID --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {team.map((person) => (
+            <div 
+              key={person.id} 
+              className="bg-white rounded-[10px] p-4 text-center shadow-[0_5px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-500 group border border-gray-50 transform hover:-translate-y-3 cursor-pointer"
+            >
+              
+              {/* Circular Image Container - Exact 100% Match */}
+              <div className="relative mx-auto mb-6 rounded-full overflow-hidden  ">
+                <img 
+                  src={person.img} 
+                  alt={person.name} 
+                  className="w-full h-full object-cover bg-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+              </div>
+
+              {/* Name & Degree */}
+              <h3 className="text-[22px] font-[800] text-[#1A2132] mb-1 group-hover:text-[#FF6B2C] transition-colors">
+                {person.name}
+              </h3>
+              <p className="text-[#777777] text-[14px] mb-1 font-medium uppercase tracking-tight">
+                {person.deg}
+              </p>
+
+              {/* Star Rating */}
+              <div className="flex justify-center gap-1 text-[#FF6B2C] text-[14px] mb-2">
+                {[...Array(5)].map((_, i) => <AiFillStar key={i} />)}
+              </div>
+
+              {/* Footer Info (Courses & Students) */}
+              <div className="flex items-center justify-between pt-5 border-t border-gray-100 text-[#555555] text-[14px] font-semibold">
+                <div className="flex items-center gap-2">
+                  <AiOutlineBook className="text-[#777777] text-[18px]" />
+                  <span>{person.courses}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <AiOutlineTeam className="text-[#777777] text-[18px]" />
+                  <span>{person.students}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* --- BOTTOM TEXT --- */}
+        <div className="text-center mt-12">
+          <p className="text-[#555555] text-[16px]">
+            Want to help people learn, grow and achieve more in life? 
+            <span className="text-[#FF6B2C] font-bold ml-2 hover:underline cursor-pointer">
+              Become an instructor
+            </span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default Instructors;
